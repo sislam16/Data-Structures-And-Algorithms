@@ -20,7 +20,10 @@ var mergeTwoLists = function(l1, l2) {
     }
     while(current1 && current2){
         if(current1 > current2){
-            let newNode = new Node()h
+            if(merged.head === null){
+                this[head] = new Node(current2.value)
+            }
+            
         }
     }
     
