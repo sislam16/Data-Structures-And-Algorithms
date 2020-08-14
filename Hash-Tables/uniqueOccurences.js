@@ -7,26 +7,22 @@ var uniqueOccurrences = function(arr) {
     let valTracker = {}
     
     for(let el of arr){
-        if(!tracker[arr[el]]){
-            tracker[arr[el]] = 1
+        if(!tracker[el]){
+            tracker[el] = 1
         } else{
-            tracker[arr[el]] +=1
+            tracker[el] +=1
         }
     }
-    
+  
     
     for(let key in tracker){
-        if(!valTracker[tracker[key].value]){
-            valTracker[tracker[key].value] = 1
+        if(!valTracker[tracker[key]]){
+            valTracker[tracker[key]] = 1
+            
         } else{
-            valTracker[tracker[key].value] +=1
+            return false 
         }
         }
         
-    for(let elem in valTracker){
-        if(valTracker[elem].value >= 1){
-            return false
-        }
         return true
-    }
-};
+    };
