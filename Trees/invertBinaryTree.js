@@ -4,13 +4,12 @@ var invertTree = function(root) {
     }
     
     
-    if(root.left && root.right){
-        // console.log(root)
+    if(root){
         prevLeft = root.left 
         root.left = root.right
         root.right = prevLeft
-        console.log(root)
-        invertTree(root)
+        invertTree(root.left)
+        invertTree(root.right)
 
     }
     return root
