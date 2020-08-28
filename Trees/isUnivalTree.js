@@ -1,22 +1,23 @@
 var isUnivalTree = function(root) {
-    // let valCheck = root.val
     
-    if(!root){
-        return false
-    }
-    
-    if(root){
-        let rootVal = root.val 
-        let left = root.left
-        let right = root.right
-        
-        if(left.val === rootVal && right.val === rootVal){
-             return true
-        }
-       return false
-    }
-    
-    isUnivalTree(root.left)
-    isUnivalTree(root.right)
-    
+if(!root){
+    return false
+}
+
+if(root.left && root.left.val !== root.val){
+    return false
+}
+
+if(root.right && root.right.val !== root.val){
+    return false 
+}
+
+let isUnival = true
+if(root.left){
+  isUnival = isUnival && isUnivalTree(root.left)
+}
+if(root.right){
+    isUnival = isUnival && isUnivalTree(root.right)
+}
+return isUnival 
 };
