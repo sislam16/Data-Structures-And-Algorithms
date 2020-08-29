@@ -1,3 +1,8 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
 var isAnagram = function(s, t) {
     const sTracker = {}
     const tTracker = {}
@@ -25,11 +30,18 @@ var isAnagram = function(s, t) {
      return false
         
     } else{
-            for(let i =0; i <t.length; i++){
+            for(let i =0; i < t.length; i++){
                 if(sTracker[t[i]]){
                     sTracker[t[i]] -=1
                 }
             }
+        
+        for(let key in sTracker){
+            if(sTracker[key].value > 0){
+                return false
+            }
+        }
+        return true
         console.log(sTracker)
         }
         
