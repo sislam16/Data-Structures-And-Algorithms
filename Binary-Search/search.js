@@ -8,20 +8,27 @@ var search = function(nums, target) {
     let high = nums.length - 1
     let middle = Math.floor(nums.length/2)
     
-    if(target >= low && target < middle ){
+    if(target === nums[middle]){
+        return middle
+    }
+    
+    if(target < nums[middle] ){
         
         for(let i=low; i< middle; i++){
             console.log('i',i)
             if(target === nums[i]){
-                return nums[i]
+                return i
             }
         }
     }
     
-    if(target >= middle && target < high){
+    if(target > middle){
         for(let k= middle; k < high; k++){
             console.log('k',k)
-            return nums[k]
+            if(target === nums[k]){
+                return k
+            }
         }
     }
+
 };
