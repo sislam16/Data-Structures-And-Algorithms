@@ -18,14 +18,22 @@ var searchInsert = function(nums, target) {
         for(let i=0; i < mid; i++){
             if(target === nums[i]){
                 return i
+            }else{
+                if(target < nums[i]){
+                    return i +1
+                }
             }
-        }
+        } 
     }
     
     if(target > nums[mid]){
         for(let j=0; j<= end; j++){
             if(target === nums[j]){
                 return j
+            } else {
+                if(target > nums[j]){
+                return j + 1
+            }
             }
         }
     }
