@@ -1,24 +1,32 @@
-const isBalanced = (str) =>{
-    let stack = new Stack()
-    for(let i = 0; i < str.length; i++){
-  
-      if(str[i] === '{' || str[i]==='['|| str[i]==='('){
-        stack.push(str[i])
-      } else if(str[i] === ']' && stack.peek() !=='[') {
-        console.log('1', str[i], stack.peek())
-        return 'NO'
-      } else if(str[i] === ')' && stack.peek() !=='(') {
-        console.log('2', str[i])
-        return 'NO'
-      } else if(str[i] === '}' && stack.peek() !=='{') {
-        console.log('3', str[i])
-        return 'NO'
-      }else{
-        console.log("stack.pop happened", stack)
-      stack.pop()
-      }
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(str) {
+  let stack =[]
+  let brackets = {
+    '(':')',
+    '{':'}',
+    '[':']'
   }
-   return 'YES'
+
+  for(let i = 0; i < str.length; i++){
+    if(brackets[str[i]]){
+      stack.push(brackets[str[i]])
+    } else{
+     if(peek(stack) === str[i]){
+      stack.pop() 
+     } else{
+      return false
+     }
+      
     }
-    
-  console.log(isBalanced('([]{})'))
+  }
+  return stack.length === 0
+}
+
+  const peek = (stack) =>{
+    return stack[stack.length-1] 
+  } 
+
+;
