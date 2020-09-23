@@ -21,15 +21,21 @@ function Solution(){
     this.stack =[]
     this.queue =[]
 
-    this.enqueueCharacter = function(char){
-        this.queue.push(char)
+    this.enqueueCharacter = function(a){
+       return this.queue.push(a)
     }
 
-    this.pushCharacter = function(char){
-        this.stack.push(char)
+    this.pushCharacter = function(b){
+       return this.stack.push(b)
     }
 
- 
+    this.popCharacter = function(){
+        return this.stack.pop()
+    }
+
+    this.dequeueCharacter = function(){
+       return this.queue.shift()
+    }
 }
 
 function main(){
