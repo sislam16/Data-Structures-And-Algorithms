@@ -16,14 +16,12 @@ var isPerfectSquare = function(num) {
         x = Math.floor(x/2) // dividing problem size by half 
         
   }
-    console.log('23:', x, prevSq)
     
     if((x*x) === num){
         return true
     }
     
     for(let i = x+1; i < prevSq; i++){ 
-        console.log('i', i)
             if((i*i) === num){
             return true
         }
