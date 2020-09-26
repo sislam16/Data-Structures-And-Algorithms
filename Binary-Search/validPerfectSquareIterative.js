@@ -10,8 +10,7 @@ var isPerfectSquare = function(num) {
         const mid = Math.floor((low + high + 1) / 2);
         if (mid * mid === num) {
             return true;
-        }
-        if(mid * mid < num){
+        }else if(mid * mid < num){
             low = mid
         } else{
             high = mid -1
