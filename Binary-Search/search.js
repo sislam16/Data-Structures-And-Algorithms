@@ -11,7 +11,7 @@ var search = function(nums, target) {
         let middle = Math.floor((low +high)/2)
         if(target === nums[middle]){
             return middle
-        } else if(nums[middle]> target){
+        } else if(nums[middle] > target){
             high = middle - 1
         } else{
             low = middle + 1
