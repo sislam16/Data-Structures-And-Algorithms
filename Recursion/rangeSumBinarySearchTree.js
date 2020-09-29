@@ -21,7 +21,6 @@ var rangeSumBST = function(root, L, R) {
     
     if(root.val <= R && root.val >= L){ // if the root val is greater than the left lead and less than the right leaf add those numbers in between
         sum = root.val + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R)
-        console.log(sum)
     }else if (root.val > R){ // if root val is greater than the R just check the left sub tree
         sum = rangeSumBST(root.left, L, R)
     } else{ // if root val is greater than the left sub tree root check right 
