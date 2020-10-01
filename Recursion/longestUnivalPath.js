@@ -18,11 +18,11 @@ var longestUnivaluePath = function(root) {
     }
     
     if(root.left && root.left.val !== root.val){
-        length =0
+        length +=1
     } 
     
     if(root.right && root.right.val !== root.val){
-    length =0
+    length +=1
     }  
     
     let isUnival = true
