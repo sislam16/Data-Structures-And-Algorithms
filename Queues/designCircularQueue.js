@@ -3,15 +3,13 @@
  * @param {number} k
  */
 
-var Node = function(val){
-    this.val = val
-    this.next = null
-}
-    
 
 var MyCircularQueue = function(k) {
-    this.head = null
-    
+    this.queue = [];
+    this.maxSize = k;
+    this.currentSize = 0;
+    this.frontFilled = -1;
+    this.rearFilled = -1;
 };
 
 /**
@@ -20,7 +18,23 @@ var MyCircularQueue = function(k) {
  * @return {boolean}
  */
 MyCircularQueue.prototype.enQueue = function(value) {
+    if(this.isFull()){
+        return false
+    }
     
+    let newPosition = this.rearFilled + 1
+    if(newPosition === this.maxSize){
+        newPosition = 0
+    }
+        
+    if(this.isEmpty()){
+        this.frontFilled = newPosition
+    }
+    this.queue[newPosition] = value
+    this.rearFilled = newPosition 
+
+    this.currentSize += 1
+    return true  
 };
 
 /**
@@ -28,7 +42,17 @@ MyCircularQueue.prototype.enQueue = function(value) {
  * @return {boolean}
  */
 MyCircularQueue.prototype.deQueue = function() {
+    if(this.isEmpty()){
+        return false
+    }
     
+    this.frontFilled = this.frontFilled + 1
+    this.currentSize -= 1
+    
+    if(this.frontFilled === this.maxSize){
+        this.frontFilled = 0
+    }
+    return true 
 };
 
 /**
@@ -36,7 +60,11 @@ MyCircularQueue.prototype.deQueue = function() {
  * @return {number}
  */
 MyCircularQueue.prototype.Front = function() {
+     if(this.isEmpty()){
+        return -1
+    }
     
+    return this.queue[this.frontFilled]
 };
 
 /**
@@ -44,7 +72,11 @@ MyCircularQueue.prototype.Front = function() {
  * @return {number}
  */
 MyCircularQueue.prototype.Rear = function() {
+    if(this.isEmpty()){
+        return -1
+    }
     
+    return this.queue[this.rearFilled]
 };
 
 /**
@@ -52,6 +84,7 @@ MyCircularQueue.prototype.Rear = function() {
  * @return {boolean}
  */
 MyCircularQueue.prototype.isEmpty = function() {
+    return this.currentSize === 0
     
 };
 
@@ -60,7 +93,7 @@ MyCircularQueue.prototype.isEmpty = function() {
  * @return {boolean}
  */
 MyCircularQueue.prototype.isFull = function() {
-    
+    return this.currentSize === this.maxSize
 };
 
 /** 
