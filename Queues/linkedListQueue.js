@@ -5,9 +5,9 @@ class Node {
     }
 }
 class Queue {
-   
     constructor() {
       this.head = null;
+      this.tail = null; 
       this.length = 0
     }
   
@@ -17,12 +17,14 @@ class Queue {
         if(this.head === null){
            this.head = node
             current = node
+            this.tail = node
         } else{
-            current = this.head // adds the new node as the next el of existing list
-            while(current.next){ 
-                current = current.next // while there is a next node, the current will be next 
-            }
-            current.next = node //creates new node
+            // current = this.head // adds the new node as the next el of existing list
+            // while(current.next){ 
+            //     current = current.next // while there is a next node, the current will be next 
+            // }
+            this.tail.next = node //creates new node
+            this.tail = node
         }
         this.length += 1
     }
@@ -30,18 +32,18 @@ class Queue {
     dequeue() {
         let current = this.head
         if(current){ // if there is an el in the front of list
-            let el = current.el
+            let el = current.value
             current = current.next
             this.head = current
             this.length -=1
-            return current
+            return el
         }
         return null    
     }
   
     peek() {
-        if(head){
-            return head.val
+        if(this.head){
+            return this.head.value
         }
         return null
     }
@@ -61,4 +63,5 @@ class Queue {
 
   q.dequeue()
   console.log(q)
-
+console.log(q.peek())
+console.log(q.isEmpty())
