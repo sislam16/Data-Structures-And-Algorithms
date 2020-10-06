@@ -12,8 +12,9 @@ class Queue {
     }
   
     peek() {
-      const firstIn = 0;
-      return this.array[firstIn];
+        if(!this.isEmpty()){
+            return this.array[0];
+        }
     }
   
     isEmpty() {
@@ -21,3 +22,14 @@ class Queue {
     }
   
   }
+
+  let q = new Queue()
+  q.enqueue(5)
+  q.enqueue(4)
+  q.enqueue(3)
+  q.enqueue(1)
+  console.log(q)
+
+  q.dequeue()
+  console.log(q)
+
