@@ -3,7 +3,7 @@ import {Queue} from './arrayQueue'
  * Initialize your data structure here.
  */
 var MyStack = function() {
-    this.queue =[]
+    this.queue = new Queue()
     this.size = 0
 };
 
@@ -13,7 +13,7 @@ var MyStack = function() {
  * @return {void}
  */
 MyStack.prototype.push = function(x) {
-    this.queue[this.size] = x // creating el at position of size num
+    this.queue.enqueue(x)// creating el at position of size num
     this.size++ // increase stack size by1
 };
 
@@ -36,7 +36,7 @@ MyStack.prototype.pop = function() {
  * @return {number}
  */
 MyStack.prototype.top = function() {
-    if(this.size ===0){
+    if(this.size === 0){
         return null
     }
    return this.queue[this.size-1] // last el in stack but first in queue
@@ -47,7 +47,7 @@ MyStack.prototype.top = function() {
  * @return {boolean}
  */
 MyStack.prototype.empty = function() {
-    return this.size === 0
+    return this.queue.isEmpty()
 };
 
 /** 
