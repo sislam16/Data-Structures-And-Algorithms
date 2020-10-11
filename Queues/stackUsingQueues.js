@@ -25,7 +25,7 @@ MyStack.prototype.pop = function() {
     if(this.size === 0){
         return null
     }
-    let poppedEl = this.queue[this.size-1] //saving the val of last el in queue
+    let poppedEl = this.queue.pop() //saving the val of last el in queue
     this.queue[this.size-1] = null // reassigning to null
     this.size -=1 //reducing size by 1
     return poppedEl // return val of el removed
