@@ -1,27 +1,21 @@
-const minimumSteps = (n) => {
-    let steps = 0
-
-    if (n === 1) {
-        return 0
+const minStepsToOne = (n) =>{
+    if(n === 1){
+      return 0
     }
-    while (n > 1) {
-        if (n % 2 !== 0 && n % 3 !== 0) {
-            console.log('n', n)
-            n = n - 1
-            steps += 1
-
-        } else if (n % 2 === 0) {
-            n = n / 2
-            steps += 1
-
-        } else if (n % 3 === 0) {
-            n = n / 3
-            steps += 1
-
-        }
+    
+    //subtract 1
+    let steps = minStepsToOne(n-1)
+    
+    //divide by 3
+    if(n%3===0){
+    let divide3 = minStepsToOne(n /3)
+    steps = Math.min(steps, divide3)
     }
-
-    return steps
-    // console.log(steps)
-
-}
+    
+    //divide by 2
+    if(n%2 ===0){
+      let divide2 = minStepsToOne(n/2)
+      steps = Math.min(steps, divide2)
+    }
+    return steps + 1
+  }
